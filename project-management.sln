@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Project.A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{02E81B77-D7E2-4BBA-B50F-423E375682C0}"
 	ProjectSection(SolutionItems) = preProject
-		README.MD = README.MD
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
