@@ -13,3 +13,6 @@
 [submodule "project-api"]
 	path = project-api
 	url = https://github.com/afroze9/dotnet-projectmanagement-project-api.git
+[submodule "frontend-app"]
+	path = frontend-app
+	url = https://github.com/afroze9/dotnet-projectmanagement-frontend-app.git
