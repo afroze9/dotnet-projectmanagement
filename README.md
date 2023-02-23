@@ -35,12 +35,12 @@ Create a simple microservices based application with the following components:
 * [ ] Configuration Server (Steeltoe)
 * [ ] Health checks (Steeltoe)
 * [ ] Deployment Model (Kubernetes)
-* [ ] CI/CD Pipeline
-* [ ] Testing Framework
+* [ ] CI/CD Pipeline (Azure DevOps)
+* [ ] Testing Framework (xUnit/Moq)
   * [ ] Unit Tests
   * [ ] Integration Tests
   * [ ] E2E Tests
-* [ ] Backend Apis
+* [ ] Backend Apis (.NET 7)
   * [ ] Company Api
   * [ ] Project Api
 * [ ] Frontend Application
