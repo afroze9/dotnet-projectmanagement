@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "discovery-server", "discovery-server", "{39927CC3-4255-4C81-8126-29F4C5A5B16C}"
 	ProjectSection(SolutionItems) = preProject
 		discovery-server\config\config.hcl = discovery-server\config\config.hcl
+		discovery-server\config\rules.hcl = discovery-server\config\rules.hcl
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "company-api", "company-api", "{B9849631-8253-492A-A7B7-E60A64C50858}"
