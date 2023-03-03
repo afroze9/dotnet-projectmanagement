@@ -21,7 +21,17 @@
 # Project Scope
 Create a simple microservices based application with the following components:
 * [ ] Service Discovery (Consul)
+  * [x] Basic Setup
+  * [x] Basic ACL
+  * [ ] mTLS
+  * [ ] Policies/Tokens via config files
+* [ ] Configuration Server **(One or more of)**
+  * [ ] Steeltoe built-in configuration
+  * [ ] Vault
 * [ ] Api Gateway (Ocelot)
+  * [x] Base Setup (Consul + Auth)
+  * [ ] Add routes for company-api
+  * [ ] Add routes for project-api
 * [ ] Logging/Monitoring **(One of)**
   * [ ] Azure Application Insights
   * [ ] ELK
@@ -32,7 +42,6 @@ Create a simple microservices based application with the following components:
   * [ ] Azure AD
   * [ ] Keycloak
   * [ ] Identity Server
-* [ ] Configuration Server (Steeltoe)
 * [ ] Health checks (Steeltoe)
 * [ ] Deployment Model (Kubernetes)
 * [ ] CI/CD Pipeline (Azure DevOps)
