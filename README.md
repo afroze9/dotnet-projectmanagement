@@ -10,13 +10,14 @@
 
 
 # TODO
-* [ ] Finalize Project Scope
+* [x] Finalize Project Scope
 * [ ] Task Assignment
 * [ ] Trainings
 * [ ] Development
 * [ ] Documentation
 * [ ] Component Integration
 * [ ] Presentation / Demo
+* [ ] Move ACL for each microservice to its own service directory
 
 # Project Scope
 Create a simple microservices based application with the following components:
@@ -26,7 +27,7 @@ Create a simple microservices based application with the following components:
   * [ ] mTLS
   * [ ] Policies/Tokens via config files
 * [ ] Configuration Server **(One or more of)**
-  * [ ] Steeltoe built-in configuration
+  * [x] Consul KV
   * [ ] Vault
 * [ ] Api Gateway (Ocelot)
   * [x] Base Setup (Consul + Auth)
@@ -83,7 +84,9 @@ consul.exe acl token create -description "Token for consul-server-1" -node-ident
 Reload config `consul.exe reload`
 
 ### Create tokens for services
-```powershell
-consul.exe acl token create -description "Token for <service-name>" -service-identity "<service-name>" -token="<bootstrap-token>"
-```
-Use the generated secret-id in `appsettings.json` for each service
+Run the `add-policies.ps1` script under `discovery-server` folder
+
+Use the generated secret-ids in `appsettings.json` for each service
+
+### Create startup configs
+Run the `add-keyvalues.ps1` script under `discovery-server` folder
