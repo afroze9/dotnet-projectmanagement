@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "discovery-server", "discove
 		discovery-server\company-api-config.json = discovery-server\company-api-config.json
 		discovery-server\project-api-config.json = discovery-server\project-api-config.json
 		discovery-server\project-api-policies.hcl = discovery-server\project-api-policies.hcl
+		discovery-server\api-gateway-policies.hcl = discovery-server\api-gateway-policies.hcl
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "company-api", "company-api", "{B9849631-8253-492A-A7B7-E60A64C50858}"

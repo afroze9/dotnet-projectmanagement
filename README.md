@@ -33,11 +33,13 @@ Create a simple microservices based application with the following components:
     * [ ] Vault
 * [ ] Api Gateway (Ocelot)
     * [x] Base Setup (Consul + Auth)
-    * [ ] Add routes for company-api
+    * [x] Add routes for company-api
     * [ ] Add routes for project-api
 * [ ] Logging/Monitoring **(One of)**
     * [ ] Azure Application Insights
     * [ ] ELK
+        * [ ] [Docker](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+        * [ ] [Kubernetes](https://phoenixnap.com/kb/elasticsearch-kubernetes)
 * [ ] Tracing **(One or more of)**
     * [ ] OpenTelemetry
     * [ ] Zipkin
@@ -45,6 +47,7 @@ Create a simple microservices based application with the following components:
     * [ ] Azure AD
     * [ ] Keycloak
     * [ ] Identity Server
+    * [ ] Auth0
 * [ ] Health checks (Steeltoe)
 * [ ] Deployment Model (Kubernetes)
 * [ ] CI/CD Pipeline (Azure DevOps)
