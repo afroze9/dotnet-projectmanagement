@@ -5,6 +5,7 @@
     <mapping directory="$PROJECT_DIR$/api-gateway" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/company-api" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/discovery-server" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/frontend-app" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/project-api" vcs="Git" />
   </component>
 </project>

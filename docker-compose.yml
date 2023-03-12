@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  company-db:
+    container_name: company-db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=developer
+      - POSTGRES_PASSWORD=dev123
+      - POSTGRES_DB=project_management_company
+      - PGPORT=${COMPANY_DB_PORT}
+    ports:
+      - ${COMPANY_DB_PORT}:${COMPANY_DB_PORT}
+    volumes:
+      - C:\tools\dotnet-project-data\projectmanagement\company:/var/lib/postgresql/data
+    networks:
+      - project-management-network
+
+networks:
+  project-management-network:
+    driver: bridge
