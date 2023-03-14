@@ -132,6 +132,16 @@ services:
       timeout: 10s
       retries: 120
 
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - 13133:13177
+      - 16686:16686
+      - 4317:4317
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+      - LOG_LEVEL=debug
+
 networks:
   project-management-network:
     driver: bridge

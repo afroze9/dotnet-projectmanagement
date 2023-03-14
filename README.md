@@ -37,28 +37,46 @@ Create a simple microservices based application with the following components:
     * [x] Add routes for company-api
     * [ ] Add routes for project-api
 * [ ] Logging/Monitoring **(One of)**
-    * [ ] Azure Application Insights
+    * [ ] ~~Azure Application Insights~~
     * [ ] ELK
-        * [ ] [Docker](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+        * [x] [Docker](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
         * [ ] [Kubernetes](https://phoenixnap.com/kb/elasticsearch-kubernetes)
-* [ ] Tracing **(One or more of)**
-    * [ ] OpenTelemetry
-    * [ ] Zipkin
+* [x] Tracing
+    * [x] [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Instrumentation.AspNetCore/README.md)
+    * [x] Jaeger
 * [ ] Authentication/Authorization **(One of)**
     * [ ] Azure AD
     * [ ] Keycloak
     * [ ] Identity Server
-    * [ ] Auth0
+    * [x] Auth0
 * [ ] Health checks (Steeltoe)
 * [ ] Deployment Model (Kubernetes)
-* [ ] CI/CD Pipeline (Azure DevOps)
+* [x] CI/CD Pipeline
+    * [x] GitHub Actions
+    * [ ] ~~Azure DevOps~~
 * [ ] Testing Framework (xUnit/Moq)
     * [ ] Unit Tests
     * [ ] Integration Tests
     * [ ] E2E Tests
 * [ ] Backend Apis (.NET 7)
-    * [ ] Company Api
+    * [ ] Company API
+        * [x] Logging
+        * [x] Tracing
+            * [x] Common
+            * [ ] With Context
+        * [x] Auth
+        * [x] APIs
+        * [ ] Docker
+        * [x] CI/CD
     * [ ] Project Api
+        * [ ] Logging
+        * [ ] Tracing
+            * [ ] Common
+            * [ ] With Context
+        * [ ] Auth
+        * [ ] APIs
+        * [ ] Docker
+        * [ ] CI/CD
 * [ ] Frontend Application
     * [ ] React App
     * [ ] Tests
