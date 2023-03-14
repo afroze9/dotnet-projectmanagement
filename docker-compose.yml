@@ -15,7 +15,7 @@ services:
     volumes:
       - company-db:/var/lib/postgresql/data
     networks:
-      - project-management-network
+      - company-api
 
   es-setup:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -105,6 +105,8 @@ services:
         ]
       interval: 10s
       timeout: 10s
+    networks:
+      - logs
 
   kibana:
     depends_on:
@@ -131,6 +133,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+    networks:
+      - logs
 
   jaeger:
     image: jaegertracing/all-in-one:latest
@@ -141,9 +145,19 @@ services:
     environment:
       - COLLECTOR_OTLP_ENABLED=true
       - LOG_LEVEL=debug
+    networks:
+      - tracing
 
 networks:
-  project-management-network:
+  discovery:
+    driver: host
+  company-api:
+    driver: bridge
+  project-api:
+    driver: bridge
+  tracing:
+    driver: bridge
+  logs:
     driver: bridge
 
 volumes:
