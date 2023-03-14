@@ -23,6 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "discovery-server", "discove
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "company-api", "company-api", "{B9849631-8253-492A-A7B7-E60A64C50858}"
+	ProjectSection(SolutionItems) = preProject
+		company-api\.github\workflows\dotnet.yml = company-api\.github\workflows\dotnet.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{51ABEF4E-2E46-4AE1-A864-98CE5AD941A3}"
 EndProject
