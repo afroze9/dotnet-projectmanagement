@@ -32,6 +32,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Company.Api", "company-api\src\ProjectManagement.Company.Api\ProjectManagement.Company.Api.csproj", "{15AD6B20-9914-44F2-A177-E618E79C357E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project-api", "project-api", "{BA9B6947-466A-4F62-84D2-23098AB2E8FA}"
+	ProjectSection(SolutionItems) = preProject
+		project-api\.github\workflows\dotnet.yml = project-api\.github\workflows\dotnet.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2017EF9B-B509-4B04-B92A-26D9A636993F}"
 EndProject

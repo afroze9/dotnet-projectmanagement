@@ -17,6 +17,22 @@ services:
     networks:
       - company-api
 
+  project-db:
+    container_name: project-db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=developer
+      - POSTGRES_PASSWORD=dev123
+      - POSTGRES_DB=project_management_project
+      - PGPORT=${PROJECT_DB_PORT}
+    ports:
+      - ${PROJECT_DB_PORT}:${PROJECT_DB_PORT}
+    volumes:
+      - company-db:/var/lib/postgresql/data
+    networks:
+      - company-api
+
   company-integration-test-db:
     container_name: company-integration-test-db
     image: postgres:latest
