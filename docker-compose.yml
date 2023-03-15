@@ -17,6 +17,20 @@ services:
     networks:
       - company-api
 
+  company-integration-test-db:
+    container_name: company-integration-test-db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=developer
+      - POSTGRES_PASSWORD=dev123
+      - POSTGRES_DB=project_management_integration_test_company
+      - PGPORT=${COMPANY_INTEGRATION_DB_PORT}
+    ports:
+      - ${COMPANY_INTEGRATION_DB_PORT}:${COMPANY_INTEGRATION_DB_PORT}
+    volumes:
+      - company-integration-test-db:/var/lib/postgresql/data
+
   es-setup:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
@@ -168,4 +182,6 @@ volumes:
   esdata01:
     driver: local
   kibanadata:
+    driver: local
+  company-integration-test-db:
     driver: local
