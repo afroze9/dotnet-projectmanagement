@@ -32,10 +32,10 @@ Create a simple microservices based application with the following components:
 * [ ] Configuration Server **(One or more of)**
     * [x] Consul KV
     * [ ] Vault
-* [ ] Api Gateway (Ocelot)
+* [x] Api Gateway (Ocelot)
     * [x] Base Setup (Consul + Auth)
     * [x] Add routes for company-api
-    * [ ] Add routes for project-api
+    * [x] Add routes for project-api
 * [ ] Logging/Monitoring **(One of)**
     * [ ] ~~Azure Application Insights~~
     * [ ] ELK
@@ -69,17 +69,18 @@ Create a simple microservices based application with the following components:
         * [ ] Docker
         * [x] CI/CD
     * [ ] Project Api
-        * [ ] Logging
+        * [x] Logging
         * [ ] Tracing
-            * [ ] Common
+            * [x] Common
             * [ ] With Context
-        * [ ] Auth
-        * [ ] APIs
+        * [x] Auth
+        * [x] APIs
         * [ ] Docker
-        * [ ] CI/CD
+        * [x] CI/CD
 * [ ] Frontend Application
     * [ ] React App
     * [ ] Tests
+* [ ] Batch files for setup
 
 # Getting Started
 
