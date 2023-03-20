@@ -68,6 +68,7 @@ Create a simple microservices based application with the following components:
         * [x] APIs
         * [ ] Docker
         * [x] CI/CD
+        * [x] Health checks
     * [ ] Project Api
         * [x] Logging
         * [ ] Tracing
@@ -77,6 +78,7 @@ Create a simple microservices based application with the following components:
         * [x] APIs
         * [ ] Docker
         * [x] CI/CD
+        * [ ] Health checks
 * [ ] Frontend Application
     * [ ] React App
     * [ ] Tests
