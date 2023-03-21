@@ -16,6 +16,3 @@
 [submodule "frontend-app"]
 	path = frontend-app
 	url = https://github.com/afroze9/dotnet-projectmanagement-frontend-app.git
-[submodule "event-bus"]
-	path = event-bus
-	url = https://github.com/afroze9/dotnet-projectmanagement-event-bus.git
