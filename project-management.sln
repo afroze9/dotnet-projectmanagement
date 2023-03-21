@@ -54,6 +54,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Company.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Company.Api.UnitTests", "company-api\tests\ProjectManagement.Company.Api.UnitTests\ProjectManagement.Company.Api.UnitTests.csproj", "{44258692-16CE-4820-B6E3-C10FA17172C1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "event-bus", "event-bus", "{BCE01725-4685-4509-8672-8CD1F2C46E3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3EB8FA04-F6C6-4678-962F-64B63B18A6C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.EventBus", "event-bus\src\ProjectManagement.EventBus\ProjectManagement.EventBus.csproj", "{C5310CA8-AF1A-4568-8363-720E524D4397}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +89,10 @@ Global
 		{44258692-16CE-4820-B6E3-C10FA17172C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44258692-16CE-4820-B6E3-C10FA17172C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44258692-16CE-4820-B6E3-C10FA17172C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5310CA8-AF1A-4568-8363-720E524D4397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5310CA8-AF1A-4568-8363-720E524D4397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5310CA8-AF1A-4568-8363-720E524D4397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5310CA8-AF1A-4568-8363-720E524D4397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{271B890A-46CB-4878-B70F-05CB98785206} = {702FE086-BFA7-4B4C-A60E-ACF6FB9BA618}
@@ -94,5 +104,7 @@ Global
 		{A0D6DBBA-9E13-4C88-BCA7-3F8CDDF116EB} = {B9849631-8253-492A-A7B7-E60A64C50858}
 		{9E0A525D-EDC5-4A48-B64E-DB1ACCC74A65} = {A0D6DBBA-9E13-4C88-BCA7-3F8CDDF116EB}
 		{44258692-16CE-4820-B6E3-C10FA17172C1} = {A0D6DBBA-9E13-4C88-BCA7-3F8CDDF116EB}
+		{3EB8FA04-F6C6-4678-962F-64B63B18A6C4} = {BCE01725-4685-4509-8672-8CD1F2C46E3B}
+		{C5310CA8-AF1A-4568-8363-720E524D4397} = {3EB8FA04-F6C6-4678-962F-64B63B18A6C4}
 	EndGlobalSection
 EndGlobal
