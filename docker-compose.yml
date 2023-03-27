@@ -16,6 +16,7 @@ services:
       - company-db:/var/lib/postgresql/data
     networks:
       - company-api
+      - rabbitmq
 
   project-db:
     container_name: project-db
@@ -178,6 +179,20 @@ services:
     networks:
       - tracing
 
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.11-management
+    #    environment:
+    #      - RABBITMQ_DEFAULT_USER=developer
+    #      - RABBITMQ_DEFAULT_PASS=dev123
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia/
+    networks:
+      - rabbitmq
+
 networks:
   discovery:
     driver: host
@@ -188,6 +203,8 @@ networks:
   tracing:
     driver: bridge
   logs:
+    driver: bridge
+  rabbitmq:
     driver: bridge
 
 volumes:
@@ -200,4 +217,6 @@ volumes:
   kibanadata:
     driver: local
   company-integration-test-db:
+    driver: local
+  rabbitmq-data:
     driver: local
