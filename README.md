@@ -82,9 +82,6 @@ Create a simple microservices based application with the following components:
 * [ ] Frontend Application
     * [ ] React App
     * [ ] Tests
-* [ ] Event Bus
-    * [ ] Abstractions
-    * [ ] Implementations
 * [ ] Service Contracts
     * [ ] Company API
     * [ ] Project API
