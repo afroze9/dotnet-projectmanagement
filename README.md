@@ -13,6 +13,7 @@
 * [x] Finalize Project Scope
 * [ ] Task Assignment
 * [ ] Trainings
+  * [ ] Docker
 * [ ] Development
 * [ ] Documentation
 * [ ] Component Integration
@@ -46,7 +47,7 @@ Create a simple microservices based application with the following components:
         * [x] [Create Docker Compose Files](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
 * [x] Tracing
     * [x] Setup Jaeger using Docker
-* [ ] Authentication/Authorization **(One of)**
+* [x] Authentication/Authorization **(One of)**
     * [ ] ~~Azure AD~~
     * [ ] ~~Keycloak~~
     * [ ] ~~Identity Server~~

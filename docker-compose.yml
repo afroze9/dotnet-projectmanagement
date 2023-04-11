@@ -190,4 +190,5 @@ volumes:
     driver: local
   kibanadata:
     driver: local
- 
+  consul-data:
+    driver: local
