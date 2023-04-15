@@ -29,7 +29,7 @@ services:
     ports:
       - ${PROJECT_DB_PORT}:${PROJECT_DB_PORT}
     volumes:
-      - company-db:/var/lib/postgresql/data
+      - project-db:/var/lib/postgresql/data
     networks:
       - project-api
 
