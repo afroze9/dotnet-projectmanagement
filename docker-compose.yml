@@ -1,4 +1,4 @@
-version: '3.4'
+version: '2.2'
 
 services:
   company-db:
@@ -16,7 +16,6 @@ services:
       - company-db:/var/lib/postgresql/data
     networks:
       - company-api
-      - rabbitmq
 
   project-db:
     container_name: project-db
@@ -32,7 +31,19 @@ services:
     volumes:
       - company-db:/var/lib/postgresql/data
     networks:
-      - company-api
+      - project-api
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - 13133:13177
+      - 16686:16686
+      - 4317:4317
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+      - LOG_LEVEL=debug
+    networks:
+      - tracing
 
   es-setup:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -78,10 +89,12 @@ services:
         echo "All done!";
       '
     healthcheck:
-      test: [ "CMD-SHELL", "[ -f config/certs/es01/es01.crt ]" ]
+      test: ["CMD-SHELL", "[ -f config/certs/es01/es01.crt ]"]
       interval: 1s
       timeout: 5s
       retries: 120
+    networks:
+      - logs
 
   es01:
     depends_on:
@@ -110,6 +123,7 @@ services:
       - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.license.self_generated.type=${LICENSE}
+    mem_limit: ${MEM_LIMIT}
     ulimits:
       memlock:
         soft: -1
@@ -122,6 +136,7 @@ services:
         ]
       interval: 10s
       timeout: 10s
+      retries: 120
     networks:
       - logs
 
@@ -141,6 +156,7 @@ services:
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+    mem_limit: ${MEM_LIMIT}
     healthcheck:
       test:
         [
@@ -153,21 +169,7 @@ services:
     networks:
       - logs
 
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-    ports:
-      - 13133:13177
-      - 16686:16686
-      - 4317:4317
-    environment:
-      - COLLECTOR_OTLP_ENABLED=true
-      - LOG_LEVEL=debug
-    networks:
-      - tracing
-
 networks:
-  discovery:
-    driver: host
   company-api:
     driver: bridge
   project-api:
@@ -189,6 +191,4 @@ volumes:
   esdata01:
     driver: local
   kibanadata:
-    driver: local
-  consul-data:
     driver: local
