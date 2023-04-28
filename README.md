@@ -181,5 +181,5 @@ Reload config `consul.exe reload`
 
 ```powershell
 wsl -d docker-desktop
-sysctl -w vm.max_map_count = 262144
+sysctl -w vm.max_map_count=262144
 ```
