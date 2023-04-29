@@ -15,7 +15,7 @@ services:
     volumes:
       - company-db:/var/lib/postgresql/data
     networks:
-      - company-api
+      - company-db
 
   project-db:
     container_name: project-db
@@ -31,16 +31,20 @@ services:
     volumes:
       - project-db:/var/lib/postgresql/data
     networks:
-      - project-api
+      - project-db
 
   api-gateway:
     container_name: api-gateway
     image: dpm-api-gateway:latest
+    restart: always
     ports:
       - ${API_GATEWAY_PORT_EXTERNAL}:443
     environment:
       - ConsulKV:Url=http://consul-server1:8500
       - ConsulKV:Token=${API_GATEWAY_TOKEN}
+      - Consul:Host=consul-server1
+      - GlobalConfiguration:ServiceDiscoveryProvider:Host=consul-server1
+      - GlobalConfiguration:ServiceDiscoveryProvider:Token=${API_GATEWAY_TOKEN}
       - GlobalConfiguration:BaseUrl=http://localhost:${API_GATEWAY_PORT_INTERNAL}
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=443
@@ -51,6 +55,64 @@ services:
     networks:
       - econsul
       - project-api
+      - company-api
+      - logs
+      - tracing
+      - api-gateway
+
+  company-api:
+    container_name: company-api
+    image: dpm-company-api:latest
+    depends_on:
+      - company-db
+    restart: always
+    ports:
+      - ${COMPANY_API_PORT_EXTERNAL}:443
+    environment:
+      - ConsulKV:Url=http://consul-server1:8500
+      - ConsulKV:Token=${COMPANY_API_TOKEN}
+      - Consul:Host=consul-server1
+      - GlobalConfiguration:BaseUrl=http://localhost:${COMPANY_API_PORT_INTERNAL}
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${COMPANY_API_CERT_PASSWORD}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ConnectionStrings:Default=${COMPANY_DB_CONNECTION_STRING}
+    volumes:
+      - ${USERPROFILE}\.aspnet\https:/https/
+    networks:
+      - econsul
+      - project-api
+      - company-api
+      - company-db
+      - logs
+      - tracing
+      - api-gateway
+
+  project-api:
+    container_name: project-api
+    image: dpm-project-api:latest
+    depends_on:
+      - project-db
+    restart: always
+    ports:
+      - ${PROJECT_API_PORT_EXTERNAL}:443
+    environment:
+      - ConsulKV:Url=http://consul-server1:8500
+      - ConsulKV:Token=${PROJECT_API_TOKEN}
+      - Consul:Host=consul-server1
+      - GlobalConfiguration:BaseUrl=http://localhost:${PROJECT_API_PORT_INTERNAL}
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${PROJECT_API_CERT_PASSWORD}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ConnectionStrings:Default=${PROJECT_DB_CONNECTION_STRING}
+    volumes:
+      - ${USERPROFILE}\.aspnet\https:/https/
+    networks:
+      - econsul
+      - project-api
+      - project-db
       - logs
       - tracing
       - api-gateway
@@ -205,7 +267,11 @@ networks:
     driver: bridge
   company-api:
     driver: bridge
+  company-db:
+    driver: bridge
   project-api:
+    driver: bridge
+  project-db:
     driver: bridge
   tracing:
     driver: bridge

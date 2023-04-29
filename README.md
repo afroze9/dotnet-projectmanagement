@@ -12,8 +12,8 @@
 
 * [x] Finalize Project Scope
 * [ ] Task Assignment
-* [ ] Trainings
-  * [ ] Docker
+* [x] Trainings
+    * [x] Docker
 * [ ] Development
 * [ ] Documentation
 * [ ] Component Integration
@@ -27,7 +27,7 @@ Create a simple microservices based application with the following components:
 
 * [ ] Service Discovery (Consul)
     * [x] Basic Setup
-    * [ ] Setup Scripts
+    * [x] Setup Scripts
     * [x] ACL Setup
     * [ ] mTLS Setup
 * [x] Configuration Server **(One or more of)**
@@ -111,7 +111,7 @@ Before you can begin development, you need to setup the following:
     * Allowed Callback URLs: `http://localhost:8012/login/oauth2/code/auth0`
     * Grant Types: Authorization Code, Refresh Token, Implicit, Client Credentials
 
-### Create a Frontend Applciation
+### Create a Frontend Application
 
 * Under Applications > Applications, create a new application with the following settings:
     * Name: `Project Management Frontend`
