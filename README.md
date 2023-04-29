@@ -83,11 +83,11 @@ Create a simple microservices based application with the following components:
         * [ ] Integration Tests
         * [x] CI/CD
         * [x] Consul Policies
-      * [x] Consul Configuration
+        * [x] Consul Configuration
 * [ ] Frontend Application
-    * [ ] SolidJS App
-    * [ ] Integration with Auth0
-    * [ ] Unit Tests
+    * [x] SolidJS App
+    * [x] Integration with Auth0
+    * [x] Tests
     * [ ] CI/CD
 * [ ] Create Deployment Files for K8s
     * [ ] [ELK](https://phoenixnap.com/kb/elasticsearch-kubernetes)
