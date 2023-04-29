@@ -65,7 +65,7 @@ Create a simple microservices based application with the following components:
         * [x] Auth
         * [x] Controllers
         * [x] Health checks
-        * [ ] Docker file
+        * [x] Docker file
         * [ ] Unit Tests
         * [ ] Integration Tests
         * [x] CI/CD
@@ -78,7 +78,7 @@ Create a simple microservices based application with the following components:
         * [x] Auth
         * [x] Controllers
         * [x] Health checks
-        * [ ] Docker file
+        * [x] Docker file
         * [ ] Unit Tests
         * [ ] Integration Tests
         * [x] CI/CD
