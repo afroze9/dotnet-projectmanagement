@@ -3,12 +3,18 @@ docker build -t dpm-frontend-app:latest .\frontend-app\
 
 echo ""
 echo "Building API Gateway"
-docker build -t dpm-api-gateway:latest .\api-gateway\src\ProjectManagement.ApiGateway\
+Push-Location ".\api-gateway\"
+docker build -t dpm-api-gateway:latest -f "src\ProjectManagement.ApiGateway\Dockerfile" .
+Pop-Location
 
 echo ""
 echo "Building Company API"
-docker build -t dpm-company-api:latest .\company-api\src\ProjectManagement.Company.Api\
+Push-Location ".\company-api\"
+docker build -t dpm-company-api:latest -f "src\ProjectManagement.Company.Api\Dockerfile" .
+Pop-Location
 
 echo ""
 echo "Building Project API"
-docker build -t dpm-project-api:latest .\project-api\src\ProjectManagement.Project.Api\
+Push-Location ".\project-api\"
+docker build -t dpm-project-api:latest -f "src\ProjectManagement.Project.Api\Dockerfile" .
+Pop-Location
