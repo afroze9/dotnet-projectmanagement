@@ -8,6 +8,14 @@ function Get-EnvValue([string]$name) {
     return $null
 }
 
+echo "Generating Dev Certs"
+$CreateCert = (dotnet dev-certs https -c | Select-String -SimpleMatch "No valid certificate found.")
+if($CreateCert) {
+    dotnet dev-certs https --trust
+}
+dotnet dev-certs https -ep ./devcerts/aspnetapp.pfx -p $devCertPassword
+
+echo ""
 echo "Increasing WSL memory for ELK"
 wsl -d docker-desktop sysctl -w vm.max_map_count=262144
 
@@ -15,6 +23,8 @@ echo ""
 echo "Building Docker Images"
 .\build-docker-images.ps1
 
+echo ""
+echo "Checking Docker Networks"
 $networkName = "consul-external"
 $networkList = docker network ls --filter name=$networkName --format "{{.Name}}"
 if ($networkList -contains $networkName) {

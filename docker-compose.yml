@@ -61,13 +61,12 @@ services:
       - api-gateway
 
   company-api:
-    container_name: company-api
     image: dpm-company-api:latest
     depends_on:
       - company-db
     restart: always
-    ports:
-      - ${COMPANY_API_PORT_EXTERNAL}:443
+    expose:
+      - ${COMPANY_API_PORT_EXTERNAL}
     environment:
       - ConsulKV:Url=http://consul-server1:8500
       - ConsulKV:Token=${COMPANY_API_TOKEN}
@@ -90,13 +89,12 @@ services:
       - api-gateway
 
   project-api:
-    container_name: project-api
     image: dpm-project-api:latest
     depends_on:
       - project-db
     restart: always
-    ports:
-      - ${PROJECT_API_PORT_EXTERNAL}:443
+    expose:
+      - ${PROJECT_API_PORT_EXTERNAL}
     environment:
       - ConsulKV:Url=http://consul-server1:8500
       - ConsulKV:Token=${PROJECT_API_TOKEN}
