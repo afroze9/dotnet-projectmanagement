@@ -15,6 +15,18 @@ echo ""
 echo "Building Docker Images"
 .\build-docker-images.ps1
 
+$networkName = "consul-external"
+$networkList = docker network ls --filter name=$networkName --format "{{.Name}}"
+if ($networkList -contains $networkName) {
+    Write-Host "The '$networkName' network already exists."
+} else {
+    docker network create $networkName
+    Write-Host "The '$networkName' network has been created."
+}
+$networkId = docker network inspect $networkName --format='{{.Id}}'
+$subnetIp = docker network inspect $networkId --format='{{(index .IPAM.Config 0).Subnet}}'
+echo "The Subnet IP is $subnetIp"
+
 echo ""
 echo "Starting Consul"
 Push-Location ".\discovery-server\docker\"
@@ -68,4 +80,5 @@ echo "Company API running at https://localhost:$company_api_port"
 echo "Project API running at https://localhost:$project_api_port"
 echo "Frontend App running at http://localhost:3000"
 echo "Consul running at http://localhost:8500"
+echo "Kibana running at http://localhost:5601"
 echo "----------------------------------------------"

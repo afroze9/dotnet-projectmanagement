@@ -51,7 +51,7 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Password=${API_GATEWAY_CERT_PASSWORD}
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
-      - ${USERPROFILE}\.aspnet\https:/https/
+      - .\devcerts:/https/
     networks:
       - econsul
       - project-api
@@ -79,7 +79,7 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
       - ConnectionStrings:Default=${COMPANY_DB_CONNECTION_STRING}
     volumes:
-      - ${USERPROFILE}\.aspnet\https:/https/
+      - .\devcerts:/https/
     networks:
       - econsul
       - project-api
@@ -108,7 +108,7 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
       - ConnectionStrings:Default=${PROJECT_DB_CONNECTION_STRING}
     volumes:
-      - ${USERPROFILE}\.aspnet\https:/https/
+      - .\devcerts:/https/
     networks:
       - econsul
       - project-api
