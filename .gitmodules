@@ -16,3 +16,6 @@
 [submodule "frontend-app"]
 	path = frontend-app
 	url = https://github.com/afroze9/dotnet-projectmanagement-frontend-app.git
+[submodule "health-checks-dashboard"]
+	path = health-checks-dashboard
+	url = https://github.com/afroze9/dotnent-health-checks-dashboard.git

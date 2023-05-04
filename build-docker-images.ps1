@@ -18,3 +18,9 @@ echo "Building Project API"
 Push-Location ".\project-api\"
 docker build -t dpm-project-api:latest -f "src\ProjectManagement.Project.Api\Dockerfile" .
 Pop-Location
+
+echo ""
+echo "Building Health Checks Dashboard"
+Push-Location ".\health-checks-dashboard\"
+docker build -t dpm-health-checks-dashboard:latest -f "src\ProjectManagement.HealthChecksDashboard\Dockerfile" .
+Pop-Location

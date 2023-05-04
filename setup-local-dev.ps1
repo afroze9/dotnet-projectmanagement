@@ -62,6 +62,12 @@ Push-Location ".\project-api\src\ProjectManagement.Project.Api\Consul"
 Pop-Location
 
 echo ""
+echo "Setting up ACL for health-checks-dashboard"
+Push-Location ".\health-checks-dashboard\src\ProjectManagement.HealthChecksDashboard\Consul"
+&".\setup-consul.ps1" "health_checks_dashboard_token"
+Pop-Location
+
+echo ""
 echo "Copying tokens to .env file"
 (Get-Content .env) |
         ForEach-Object { $_ -replace "^API_GATEWAY_TOKEN=.*", "API_GATEWAY_TOKEN=$api_gateway_token" } |

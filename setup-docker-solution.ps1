@@ -62,11 +62,19 @@ Push-Location ".\project-api\src\ProjectManagement.Project.Api\Consul"
 Pop-Location
 
 echo ""
+echo "Setting up ACL for health-checks-dashboard"
+Push-Location ".\health-checks-dashboard\src\ProjectManagement.HealthChecksDashboard\Consul"
+&".\setup-consul-docker.ps1" "health_checks_dashboard_token"
+Pop-Location
+
+
+echo ""
 echo "Copying tokens to .env file"
 (Get-Content .env) |
 ForEach-Object { $_ -replace "^API_GATEWAY_TOKEN=.*", "API_GATEWAY_TOKEN=$api_gateway_token" } |
 ForEach-Object { $_ -replace "^COMPANY_API_TOKEN=.*", "COMPANY_API_TOKEN=$company_api_token" } |
 ForEach-Object { $_ -replace "^PROJECT_API_TOKEN=.*", "PROJECT_API_TOKEN=$project_api_token" } |
+ForEach-Object { $_ -replace "^HEALTH_CHECKS_DASHBOARD_TOKEN=.*", "HEALTH_CHECKS_DASHBOARD_TOKEN=$health_checks_dashboard_token" } |
 Set-Content .env
 
 echo ""
@@ -76,6 +84,7 @@ docker-compose -f .\docker-compose.yml up -d
 $api_gateway_port = Get-EnvValue "API_GATEWAY_PORT_EXTERNAL"
 $company_api_port = Get-EnvValue "COMPANY_API_PORT_EXTERNAL"
 $project_api_port = Get-EnvValue "PROJECT_API_PORT_EXTERNAL"
+$health_checks_dashboard_port = Get-EnvValue "HEALTH_CHECKS_DASHBOARD_PORT_EXTERNAL"
 
 echo ""
 echo "----------------------------------------------"
@@ -84,11 +93,14 @@ echo "Global Token: $token"
 echo "API Gateway Token: $api_gateway_token"
 echo "Company API Token: $company_api_token"
 echo "Project API Token: $project_api_token"
+echo "Health Checks Dashboard Token: $health_checks_dashboard_token"
 echo "----------------------------------------------"
 echo "API Gateway running at https://localhost:$api_gateway_port"
 echo "Company API running at https://localhost:$company_api_port"
 echo "Project API running at https://localhost:$project_api_port"
+echo "Health checks dasboard running at https://localhost:$health_checks_dashboard_port"
 echo "Frontend App running at http://localhost:3000"
 echo "Consul running at http://localhost:8500"
 echo "Kibana running at http://localhost:5601"
+echo "Jaeger running at http://localhost:16686"
 echo "----------------------------------------------"
