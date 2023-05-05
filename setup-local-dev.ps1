@@ -19,10 +19,6 @@ echo ""
 echo "Increasing WSL memory for ELK"
 wsl -d docker-desktop sysctl -w vm.max_map_count=262144
 
-#echo ""
-#echo "Building Docker Images"
-#.\build-docker-images.ps1
-
 echo ""
 echo "Checking Docker Networks"
 $networkName = "consul-external"

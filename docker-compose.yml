@@ -1,4 +1,4 @@
-version: '2.2'
+version: '3'
 
 services:
   company-db:
@@ -65,6 +65,8 @@ services:
     depends_on:
       - company-db
     restart: always
+    deploy:
+      replicas: 3
     expose:
       - ${COMPANY_API_PORT_EXTERNAL}
     environment:
@@ -94,6 +96,8 @@ services:
     depends_on:
       - project-db
     restart: always
+    deploy:
+      replicas: 3
     expose:
       - ${PROJECT_API_PORT_EXTERNAL}
     environment:
