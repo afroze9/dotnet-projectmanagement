@@ -1,16 +1,25 @@
-function Get-EnvValue([string]$name) {
+function Get-EnvValue([string]$name)
+{
     $envFile = Get-Content -Path ".env"
-    foreach ($line in $envFile) {
-        if ($line.Trim().StartsWith($name + "=")) {
+    foreach ($line in $envFile)
+    {
+        if ( $line.Trim().StartsWith($name + "="))
+        {
             return $line.Split("=")[1]
         }
     }
     return $null
 }
 
+$api_gateway_port = Get-EnvValue "API_GATEWAY_PORT_EXTERNAL"
+$company_api_port = Get-EnvValue "COMPANY_API_PORT_EXTERNAL"
+$project_api_port = Get-EnvValue "PROJECT_API_PORT_EXTERNAL"
+$health_checks_dashboard_port = Get-EnvValue "HEALTH_CHECKS_DASHBOARD_PORT_EXTERNAL"
+
 echo "Generating Dev Certs"
 $CreateCert = (dotnet dev-certs https -c | Select-String -SimpleMatch "No valid certificate found.")
-if($CreateCert) {
+if ($CreateCert)
+{
     dotnet dev-certs https --trust
 }
 dotnet dev-certs https -ep ./devcerts/aspnetapp.pfx -p $devCertPassword
@@ -71,41 +80,43 @@ Pop-Location
 echo ""
 echo "Copying tokens to .env file"
 (Get-Content .env) |
-ForEach-Object { $_ -replace "^API_GATEWAY_TOKEN=.*", "API_GATEWAY_TOKEN=$api_gateway_token" } |
-ForEach-Object { $_ -replace "^COMPANY_API_TOKEN=.*", "COMPANY_API_TOKEN=$company_api_token" } |
-ForEach-Object { $_ -replace "^PROJECT_API_TOKEN=.*", "PROJECT_API_TOKEN=$project_api_token" } |
-ForEach-Object { $_ -replace "^HEALTH_CHECKS_DASHBOARD_TOKEN=.*", "HEALTH_CHECKS_DASHBOARD_TOKEN=$health_checks_dashboard_token" } |
-Set-Content .env
+        ForEach-Object { $_ -replace "^API_GATEWAY_TOKEN=.*", "API_GATEWAY_TOKEN=$api_gateway_token" } |
+        ForEach-Object { $_ -replace "^COMPANY_API_TOKEN=.*", "COMPANY_API_TOKEN=$company_api_token" } |
+        ForEach-Object { $_ -replace "^PROJECT_API_TOKEN=.*", "PROJECT_API_TOKEN=$project_api_token" } |
+        ForEach-Object { $_ -replace "^HEALTH_CHECKS_DASHBOARD_TOKEN=.*", "HEALTH_CHECKS_DASHBOARD_TOKEN=$health_checks_dashboard_token" } |
+        Set-Content .env
 
 echo ""
 echo "Setting up databases, elk, and jaeger"
 docker-compose -f .\docker-compose.yml up -d
 
-$api_gateway_port = Get-EnvValue "API_GATEWAY_PORT_EXTERNAL"
-$company_api_port = Get-EnvValue "COMPANY_API_PORT_EXTERNAL"
-$project_api_port = Get-EnvValue "PROJECT_API_PORT_EXTERNAL"
-$health_checks_dashboard_port = Get-EnvValue "HEALTH_CHECKS_DASHBOARD_PORT_EXTERNAL"
+$tokens = @{
+    "Global Token" = $token
+    "API Gateway Token" = $api_gateway_token
+    "Company API Token" = $company_api_token
+    "Project API Token" = $project_api_token
+    "Health Checks Dashboard Token" = $health_checks_dashboard_token
+}
+
+$services = @{
+    "API Gateway" = "https://localhost:$api_gateway_port"
+    "Company API" = "https://localhost:$company_api_port"
+    "Project API" = "https://localhost:$project_api_port"
+    "Health Checks Dashboard" = "https://localhost:$health_checks_dashboard_port"
+    "Frontend App" = "http://localhost:3000"
+    "Consul" = "http://localhost:8500"
+    "Kibana" = "http://localhost:5601"
+    "Jaeger" = "http://localhost:16686"
+}
 
 echo ""
 echo "----------------------------------------------"
 echo "Setup complete"
-
-echo "Token Information:"
 echo "----------------------------------------------"
-echo "Global Token:               $token"
-echo "API Gateway Token:          $api_gateway_token"
-echo "Company API Token:          $company_api_token"
-echo "Project API Token:          $project_api_token"
-echo "Health Checks Dashboard Token: $health_checks_dashboard_token" | column -t -s ':'
-
+echo "Tokens"
+echo "----------------------------------------------"
+$tokens.GetEnumerator() | Format-Table -AutoSize -Property Name, Value
 echo ""
-echo "Service Endpoints:"
+echo "`nServices"
 echo "----------------------------------------------"
-echo "API Gateway running at:             https://localhost:$api_gateway_port"
-echo "Company API running at:             https://localhost:$company_api_port"
-echo "Project API running at:             https://localhost:$project_api_port"
-echo "Health checks dashboard running at: https://localhost:$health_checks_dashboard_port"
-echo "Frontend App running at:            http://localhost:3000"
-echo "Consul running at:                  http://localhost:8500"
-echo "Kibana running at:                  http://localhost:5601"
-echo "Jaeger running at:                  http://localhost:16686" | column -t -s ':'
+$services.GetEnumerator() | Format-Table -AutoSize -Property Name, Value

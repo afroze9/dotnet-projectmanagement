@@ -1,16 +1,24 @@
-function Get-EnvValue([string]$name) {
+function Get-EnvValue([string]$name)
+{
     $envFile = Get-Content -Path ".env"
-    foreach ($line in $envFile) {
-        if ($line.Trim().StartsWith($name + "=")) {
+    foreach ($line in $envFile)
+    {
+        if ( $line.Trim().StartsWith($name + "="))
+        {
             return $line.Split("=")[1]
         }
     }
     return $null
 }
 
+$api_gateway_port = Get-EnvValue "API_GATEWAY_PORT_EXTERNAL"
+$company_api_port = Get-EnvValue "COMPANY_API_PORT_EXTERNAL"
+$project_api_port = Get-EnvValue "PROJECT_API_PORT_EXTERNAL"
+
 echo "Generating Dev Certs"
 $CreateCert = (dotnet dev-certs https -c | Select-String -SimpleMatch "No valid certificate found.")
-if($CreateCert) {
+if ($CreateCert)
+{
     dotnet dev-certs https --trust
 }
 dotnet dev-certs https -ep ./devcerts/aspnetapp.pfx -p $devCertPassword
@@ -75,15 +83,28 @@ echo ""
 echo "Setting up databases, elk, and jaeger"
 docker-compose -f .\docker-compose-local.yml up -d
 
-$api_gateway_port = Get-EnvValue "API_GATEWAY_PORT_EXTERNAL"
-$company_api_port = Get-EnvValue "COMPANY_API_PORT_EXTERNAL"
-$project_api_port = Get-EnvValue "PROJECT_API_PORT_EXTERNAL"
+$tokens = @{
+    "Global Token" = $token
+    "API Gateway Token" = $api_gateway_token
+    "Company API Token" = $company_api_token
+    "Project API Token" = $project_api_token
+    "Health Checks Dashboard Token" = $health_checks_dashboard_token
+}
+
+$services = @{
+    "Consul" = "http://localhost:8500"
+    "Kibana" = "http://localhost:5601"
+    "Jaeger" = "http://localhost:16686"
+}
 
 echo ""
 echo "----------------------------------------------"
 echo "Setup complete"
-echo "Global Token: $token"
 echo "----------------------------------------------"
-echo "Consul running at http://localhost:8500"
-echo "Kibana running at http://localhost:5601"
+echo "Tokens"
 echo "----------------------------------------------"
+$tokens.GetEnumerator() | Format-Table -AutoSize -Property Name, Value
+echo ""
+echo "`nServices"
+echo "----------------------------------------------"
+$services.GetEnumerator() | Format-Table -AutoSize -Property Name, Value

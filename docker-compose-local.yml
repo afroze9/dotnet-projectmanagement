@@ -188,7 +188,6 @@ networks:
   rabbitmq:
     driver: bridge
   econsul:
-    external:
       name: consul-external
 
 volumes:
