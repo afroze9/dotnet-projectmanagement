@@ -33,6 +33,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.editorconfig = .editorconfig
 		docker-compose.yml = docker-compose.yml
 		.env = .env
+		.dockerignore = .dockerignore
+		build-docker-images.ps1 = build-docker-images.ps1
+		cleanup-docker-solution.ps1 = cleanup-docker-solution.ps1
+		cleanup-local-solution.ps1 = cleanup-local-solution.ps1
+		docker-compose-local.yml = docker-compose-local.yml
+		global.json = global.json
+		setup-docker-solution.ps1 = setup-docker-solution.ps1
+		setup-local-dev.ps1 = setup-local-dev.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A0D6DBBA-9E13-4C88-BCA7-3F8CDDF116EB}"
