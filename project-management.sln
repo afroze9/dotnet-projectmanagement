@@ -56,6 +56,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{63B43ACC-98F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.HealthChecksDashboard", "health-checks-dashboard\src\ProjectManagement.HealthChecksDashboard\ProjectManagement.HealthChecksDashboard.csproj", "{A26A41C6-3393-4687-996A-8E91F36E1ADB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A41D0691-4F3F-4605-B202-BB9D400C3547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Project.Api.UnitTests", "project-api\tests\ProjectManagement.Project.Api.UnitTests\ProjectManagement.Project.Api.UnitTests.csproj", "{F3185E30-DE61-4E41-B324-BE4EED0E04A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +93,10 @@ Global
 		{A26A41C6-3393-4687-996A-8E91F36E1ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A26A41C6-3393-4687-996A-8E91F36E1ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A26A41C6-3393-4687-996A-8E91F36E1ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3185E30-DE61-4E41-B324-BE4EED0E04A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3185E30-DE61-4E41-B324-BE4EED0E04A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3185E30-DE61-4E41-B324-BE4EED0E04A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3185E30-DE61-4E41-B324-BE4EED0E04A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{271B890A-46CB-4878-B70F-05CB98785206} = {702FE086-BFA7-4B4C-A60E-ACF6FB9BA618}
@@ -102,5 +110,7 @@ Global
 		{44258692-16CE-4820-B6E3-C10FA17172C1} = {A0D6DBBA-9E13-4C88-BCA7-3F8CDDF116EB}
 		{63B43ACC-98FE-4DF1-AF9E-592616EEA8AA} = {A8E926E7-DD71-4122-B779-A3E31883B529}
 		{A26A41C6-3393-4687-996A-8E91F36E1ADB} = {63B43ACC-98FE-4DF1-AF9E-592616EEA8AA}
+		{A41D0691-4F3F-4605-B202-BB9D400C3547} = {BA9B6947-466A-4F62-84D2-23098AB2E8FA}
+		{F3185E30-DE61-4E41-B324-BE4EED0E04A5} = {A41D0691-4F3F-4605-B202-BB9D400C3547}
 	EndGlobalSection
 EndGlobal

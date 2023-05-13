@@ -57,7 +57,7 @@ Create a simple microservices based application with the following components:
         * [x] Create Backend Application
         * [x] Create Frontend Application
         * [x] Documentation
-* [ ] Health checks dashboard? (Steeltoe)
+* [x] Health checks dashboard
 * [ ] Backend Apis (.NET 7)
     * [ ] Company API
         * [x] Project Setup
@@ -67,7 +67,7 @@ Create a simple microservices based application with the following components:
         * [x] Controllers
         * [x] Health checks
         * [x] Docker file
-        * [ ] Unit Tests
+        * [x] Unit Tests
         * [ ] Integration Tests
         * [x] CI/CD
         * [x] Consul Policies
