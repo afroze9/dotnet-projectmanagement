@@ -42,6 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		setup-docker-solution.ps1 = setup-docker-solution.ps1
 		setup-local-dev.ps1 = setup-local-dev.ps1
 		setup-k8s.ps1 = setup-k8s.ps1
+		publish-docker-images.ps1 = publish-docker-images.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A0D6DBBA-9E13-4C88-BCA7-3F8CDDF116EB}"

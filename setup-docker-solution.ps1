@@ -11,6 +11,11 @@ function Get-EnvValue([string]$name)
     return $null
 }
 
+# Get docker image variables
+$date = Get-Date
+$version = $date.ToString("yyyy.MM.dd.HHmmss")
+$repo = "afroze9"
+
 $api_gateway_port = Get-EnvValue "API_GATEWAY_PORT_EXTERNAL"
 $company_api_port = Get-EnvValue "COMPANY_API_PORT_EXTERNAL"
 $project_api_port = Get-EnvValue "PROJECT_API_PORT_EXTERNAL"
@@ -30,7 +35,7 @@ wsl -d docker-desktop sysctl -w vm.max_map_count=262144
 
 echo ""
 echo "Building Docker Images"
-.\build-docker-images.ps1
+.\build-docker-images.ps1 -version $version
 
 echo ""
 echo "Checking Docker Networks"
