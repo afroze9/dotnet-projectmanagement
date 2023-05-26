@@ -35,7 +35,7 @@ wsl -d docker-desktop sysctl -w vm.max_map_count=262144
 
 echo ""
 echo "Building Docker Images"
-.\build-docker-images.ps1 -version $version
+.\build-docker-images.ps1 -version $version -repo $repo
 
 echo ""
 echo "Checking Docker Networks"
@@ -59,7 +59,7 @@ Pop-Location
 
 echo ""
 echo "Setting up ACL for api-gateway"
-Push-Location ".\api-gateway\src\ProjectManagement.ApiGateway\Consul\"
+Push-Location ".\api-gateway\src\ProjectManagement.ApiGateway\Consul"
 &".\setup-consul-docker.ps1" "api_gateway_token"
 Pop-Location
 

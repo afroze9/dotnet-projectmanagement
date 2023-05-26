@@ -4,6 +4,9 @@ param(
 )
 
 echo ""
+echo "Building version $version for repository $repo"
+
+echo ""
 echo "Building Frontend App"
 docker build -t dpm-frontend-app:latest -t dpm-frontend-app:$version -t "$repo/dpm-frontend-app:latest" -t "$repo/dpm-frontend-app:$version" .\frontend-app\
 
